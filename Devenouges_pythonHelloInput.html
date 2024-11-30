@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Input Test</title>
+    <!-- Include PyScript -->
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
 
+    <h2>Enter a number:</h2>
+    
+    <!-- Input Box -->
+    <input type="text" id="operandOne">
+    
+    <!-- Button to trigger the Python code -->
+    <button id="getValueButton">Get Value</button>
+    
+    <!-- Div to display result -->
+    <div id="total"></div>
+
+    <!-- PyScript Code -->
+    <py-script>
+        # Get the input value and display it
+        def get_value():
+            input_box = Element("operandOne")
+            operandOne = float(input_box.value)  # Convert input to float
+            result = Element("total")
+            result.write(f"Hello! The input says: {operandOne}")
+        
+        # Trigger the function when button is clicked
+        Element("getValueButton").element.onclick = get_value
+    </py-script>
+
+</body>
+</html>
