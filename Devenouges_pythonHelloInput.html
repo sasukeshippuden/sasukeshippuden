@@ -23,12 +23,16 @@
     <!-- PyScript Code -->
     <py-script>
         # Get the input value and display it
-        def get_value():
-            input_box = Element("operandOne")
-            operandOne = float(input_box.value)  # Convert input to float
-            result = Element("total")
-            result.write(f"Hello! The input says: {operandOne}")
-        
+        def get_value(event=None):  # Added event parameter to handle onclick
+            try:
+                input_box = Element("operandOne")
+                operandOne = float(input_box.value)  # Convert input to float
+                result = Element("total")
+                result.write(f"Hello! The input says: {operandOne}")
+            except ValueError:
+                # Handle invalid input (e.g., text instead of a number)
+                Element("total").write("Please enter a valid number.")
+
         # Trigger the function when button is clicked
         Element("getValueButton").element.onclick = get_value
     </py-script>
